@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h2>User: [[${user}]]</h2>
+    <p>Sum: [[${sum}]] грн</p>
+</div>
+<table>
+    <thead>
+    <tr>
+        <th>Day value (кВт)</th>
+        <th>Day Price (грн)</th>
+        <th>Night value (кВт)</th>
+        <th>Night Price (грн)</th>
+        <th>Total Price (грн)</th>
+        <th>Total value (кВт)</th>
+        <th>Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="value: ${values}">
+        <tr>
+            <td>[[${value.getDay()}]]</td>
+            <td>[[${mapper.convert(value).getDayPrice()}]]</td>
+            <td>[[${value.getNight()}]]</td>
+            <td>[[${mapper.convert(value).getNightPrice()}]]</td>
+            <td>[[${mapper.convert(value).getDayPrice() + mapper.convert(value).getNightPrice()}]]</td>
+            <td>[[${value.getDay() + value.getNight()}]]</td>
+            <td>[[${value.getTime()}]]</td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>

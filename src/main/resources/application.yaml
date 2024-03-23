@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: susach
+day: 2.64
+night: 1.32
